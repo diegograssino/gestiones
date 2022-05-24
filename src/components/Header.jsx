@@ -41,17 +41,19 @@ function Header() {
               size={isDesktop ? "md" : "xs"}
             >
               <HStack spacing="0">
-                <Emoji label="emoji" symbol="💻" />
-                <Text color={COLORS.darkText}>myDevNotes</Text>
+                <Text color={COLORS.darkText}>Logo</Text>
               </HStack>
             </Heading>
           </RouterLink>
           <Spacer />
 
           <HStack spacing="3">
-			  <Box paddingEnd="1
-			  ">
-            <CategoryMenu /></Box>
+            <Box
+              paddingEnd="1
+			  "
+            >
+              <CategoryMenu />
+            </Box>
             <Link to="/info">
               <Box color={COLORS.darkText}>
                 <VscInfo />

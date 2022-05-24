@@ -1,13 +1,13 @@
 const COLORS = {
-  darkBackground: "#0e1217",
-  darkBackgroundArticleContent: "#1c1f26",
+  darkBackground: "#243037",
+  darkBackgroundArticleContent: "#32424c",
   darkBorderArticleContent: "#545b6a",
   darkText: "#bfced7",
   quaternary: "#FC5185",
   navbar: "rgba(255, 255, 255, 0.3)",
   gradientBackgroud: "#7900FF, #548CFF",
-  darkPrimary: "teal.400",
-  darkSecondary: "purple.400",
+  darkPrimary: "#86eac0",
+  darkSecondary: "#86eac0",
 };
 
 // Los otros colores #7900FF, #548CFF, #93FFD8,#CFFFDC

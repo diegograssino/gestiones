@@ -14,10 +14,10 @@ function ArticleListContainer() {
   useEffect(() => {
     const filter = params.id
       ? firestore
-          .collection("articles")
+          .collection("gestiones")
           .where("category", "==", params.id.toUpperCase())
           .orderBy("date")
-      : firestore.collection("articles").orderBy("date", "desc");
+      : firestore.collection("gestiones").orderBy("date", "desc");
 
     filter.get().then((results) => {
       const finalResult = [];

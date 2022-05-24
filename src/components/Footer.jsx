@@ -28,8 +28,7 @@ const Footer = () => {
       <Stack>
         <Stack align="center" direction="row" justify="space-between" spacing="4">
           <HStack spacing="0">
-            <Emoji label="emoji" symbol="💻" />
-            <Text color={COLORS.darkText}>myDevNotes</Text>
+            <Text color={COLORS.darkText}>Logo - Empresa</Text>
           </HStack>
 
           <SocialMediaLinks />
