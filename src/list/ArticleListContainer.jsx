@@ -12,12 +12,15 @@ function ArticleListContainer() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const filter = params.id
-      ? firestore
-          .collection("gestiones")
-          .where("category", "==", params.id.toUpperCase())
-          .orderBy("date")
-      : firestore.collection("gestiones").orderBy("date", "desc");
+    const filter =
+      //  params.id
+      //   ? firestore
+      //       .collection("gestiones")
+      //       .where("category", "==", params.id.toUpperCase())
+      //       .orderBy("date")
+      //   :
+
+      firestore.collection("gestiones").orderBy("date", "desc");
 
     filter.get().then((results) => {
       const finalResult = [];

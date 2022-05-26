@@ -2,7 +2,7 @@ const COLORS = {
   darkBackground: "#243037",
   darkBackgroundArticleContent: "#32424c",
   darkBorderArticleContent: "#545b6a",
-  darkText: "#bfced7",
+  darkText: "#FFFFFF",
   quaternary: "#FC5185",
   navbar: "rgba(255, 255, 255, 0.3)",
   gradientBackgroud: "#7900FF, #548CFF",

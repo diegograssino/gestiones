@@ -81,7 +81,7 @@ function Article({article}) {
           <Spacer />
           <Link to={`/article/${article.id}`}>
             <Text color={COLORS.darkSecondary} fontSize="sm">
-              Leer articulo completo
+              Ir a la gestión
             </Text>
           </Link>
           <Text
