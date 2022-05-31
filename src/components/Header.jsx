@@ -7,11 +7,13 @@ import {
   Text,
   Link,
   useMediaQuery,
+  Image,
 } from "@chakra-ui/react";
 import {Link as RouterLink} from "react-router-dom";
 import {VscMention, VscInfo} from "react-icons/vsc";
 
 import COLORS from "../constants/colors";
+import logo from "../assets/logo-white.png";
 
 import Emoji from "./Emoji";
 import CategoryMenu from "./CategoryMenu";
@@ -40,8 +42,10 @@ function Header() {
               paddingTop={isDesktop ? "" : "1"}
               size={isDesktop ? "md" : "xs"}
             >
-              <HStack spacing="0">
-                <Text color={COLORS.darkText}>Logo</Text>
+              <HStack spacing="2">
+                <Image alt="Dan Abramov" boxSize="30px" objectFit="contain" src={logo} />
+                {/* <img alt="" src={logo} /> */}
+                <Text color={COLORS.darkText}>Colegio de Odóntologos de Tucumán</Text>
               </HStack>
             </Heading>
           </RouterLink>
@@ -52,7 +56,7 @@ function Header() {
               paddingEnd="1
 			  "
             >
-              <CategoryMenu />
+              {/* <CategoryMenu /> */}
             </Box>
             <Link to="/info">
               <Box color={COLORS.darkText}>

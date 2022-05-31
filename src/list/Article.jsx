@@ -76,14 +76,16 @@ function Article({article}) {
           /> */}
         </HStack>
         <HrLine theBorderColor={COLORS.darkBorderArticleContent} />
-
+        <Text color={COLORS.darkText} fontSize="md" marginTop="4">
+          {article.description}
+        </Text>
         <Flex paddingTop="4">
           <Spacer />
-          <Link to={`/article/${article.id}`}>
-            <Text color={COLORS.darkSecondary} fontSize="sm">
-              Ir a la gestión
-            </Text>
-          </Link>
+          {/* <Link to={`/article/${article.id}`}> */}
+          <Text color={COLORS.darkSecondary} fontSize="sm">
+            Ir a la gestión
+          </Text>
+          {/* </Link> */}
           <Text
             color={COLORS.darkSecondary}
             fontSize="sm"
