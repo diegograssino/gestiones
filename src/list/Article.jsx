@@ -81,11 +81,11 @@ function Article({article}) {
         </Text>
         <Flex paddingTop="4">
           <Spacer />
-          {/* <Link to={`/article/${article.id}`}> */}
-          <Text color={COLORS.darkSecondary} fontSize="sm">
-            Ir a la gestión
-          </Text>
-          {/* </Link> */}
+          <Link to={`${article.link}`}>
+            <Text color={COLORS.darkSecondary} fontSize="sm">
+              Ir a la gestión
+            </Text>
+          </Link>
           <Text
             color={COLORS.darkSecondary}
             fontSize="sm"

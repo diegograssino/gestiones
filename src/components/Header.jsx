@@ -13,10 +13,7 @@ import {Link as RouterLink} from "react-router-dom";
 import {VscMention, VscInfo} from "react-icons/vsc";
 
 import COLORS from "../constants/colors";
-import logo from "../assets/logo-white.png";
-
-import Emoji from "./Emoji";
-import CategoryMenu from "./CategoryMenu";
+import logo from "../assets/big-logo-white.png";
 
 function Header() {
   const [isDesktop] = useMediaQuery("(min-width: 768px)");
@@ -43,9 +40,7 @@ function Header() {
               size={isDesktop ? "md" : "xs"}
             >
               <HStack spacing="2">
-                <Image alt="Dan Abramov" boxSize="30px" objectFit="contain" src={logo} />
-                {/* <img alt="" src={logo} /> */}
-                <Text color={COLORS.darkText}>Colegio de Odóntologos de Tucumán</Text>
+                <Image alt="Dan Abramov" height="30" objectFit="contain" src={logo} />
               </HStack>
             </Heading>
           </RouterLink>
@@ -58,16 +53,16 @@ function Header() {
             >
               {/* <CategoryMenu /> */}
             </Box>
-            <Link to="/info">
-              <Box color={COLORS.darkText}>
-                <VscInfo />
-              </Box>
-            </Link>
-            <Link to="/contact">
+            {/* <Link to="/info"> */}
+            <Box color={COLORS.darkText} fontWeight="bold">
+              MIS GESTIONES
+            </Box>
+            {/* </Link> */}
+            {/* <Link to="/contact">
               <Box color={COLORS.darkText} fontSize="xl">
                 <VscMention />
               </Box>
-            </Link>
+            </Link> */}
           </HStack>
         </Flex>
       </Box>

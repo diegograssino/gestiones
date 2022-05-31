@@ -11,6 +11,7 @@ import ContentContainer from "./content/ContentContainer";
 import Contact from "./components/Contact";
 import Info from "./components/Info";
 import Footer from "./components/Footer";
+import Padron from "./components/Padron";
 
 function App() {
   const [isDesktop] = useMediaQuery("(min-width: 768px)");
@@ -18,7 +19,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <BrowserRouter>
-        <Box backgroundColor={COLORS.darkBackground} h="100%" minHeight="83vh">
+        <Box backgroundColor={COLORS.darkBackground} h="100%" minHeight="76vh">
           <Header />
           <Box
             // bgGradient={`linear(to-l, ${COLORS.gradientBackgroud})`}
@@ -32,6 +33,7 @@ function App() {
               <Route exact element={<Info />} path="/info" />
               <Route exact element={<ArticleListContainer />} path="/category/:id" />
               <Route exact element={<ContentContainer />} path="/article/:id" />
+              <Route exact element={<Padron />} path="/gestiones/padron" />
             </Routes>
             <Spacer />
           </Box>
