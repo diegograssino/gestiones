@@ -39,9 +39,6 @@ const Padron = () => {
         paddingY={[2, 5, 5, 7]}
         shadow="dark-lg"
       >
-        {/* <Box paddingTop="2">
-          <Badges category={content.category} marginTop="2" />
-        </Box> */}
         <HStack paddingBottom={2} spacing="0">
           {/* <Text color={COLORS.darkPrimary} fontSize="xs" fontWeight="bold">
             <VscWatch />

@@ -15,7 +15,7 @@ import {VscMention, VscInfo} from "react-icons/vsc";
 import COLORS from "../constants/colors";
 import logo from "../assets/big-logo-white.png";
 
-function Header() {
+function Header({loginData, setLoginData}) {
   const [isDesktop] = useMediaQuery("(min-width: 768px)");
 
   return (
@@ -40,29 +40,15 @@ function Header() {
               size={isDesktop ? "md" : "xs"}
             >
               <HStack spacing="2">
-                <Image alt="Dan Abramov" height="30" objectFit="contain" src={logo} />
+                <Image height="30" objectFit="contain" src={logo} />
               </HStack>
             </Heading>
           </RouterLink>
           <Spacer />
 
           <HStack spacing="3">
-            <Box
-              paddingEnd="1
-			  "
-            >
-              {/* <CategoryMenu /> */}
-            </Box>
-            {/* <Link to="/info"> */}
-            <Box color={COLORS.darkText} fontWeight="bold">
-              MIS GESTIONES
-            </Box>
-            {/* </Link> */}
-            {/* <Link to="/contact">
-              <Box color={COLORS.darkText} fontSize="xl">
-                <VscMention />
-              </Box>
-            </Link> */}
+            <Box paddingEnd="1" />
+            <Box color={COLORS.darkText}>{loginData && loginData.email}</Box>
           </HStack>
         </Flex>
       </Box>

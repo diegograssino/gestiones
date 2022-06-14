@@ -13,7 +13,7 @@ import {
 import {app} from "../database/firebase";
 import COLORS from "../constants/colors";
 
-const Login = ({setIsLogged}) => {
+const Login = ({setLoginData}) => {
   const [error, setError] = useState(false);
 
   function handleSubmit(e) {
@@ -26,10 +26,9 @@ const Login = ({setIsLogged}) => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
-        console.log("Logged In");
         var user = userCredential.user;
 
-        setIsLogged(true);
+        setLoginData(user);
         // ...
       })
       .catch((error) => {
