@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   FormControl,
   FormLabel,
@@ -14,6 +14,8 @@ import {app} from "../database/firebase";
 import COLORS from "../constants/colors";
 
 const Login = ({setIsLogged}) => {
+  const [error, setError] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
     const email = e.target.theUser.value;
@@ -33,6 +35,8 @@ const Login = ({setIsLogged}) => {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+
+        setError(true);
       });
   }
 
@@ -68,6 +72,7 @@ const Login = ({setIsLogged}) => {
           <Button colorScheme="teal" marginBottom="4" mt={4} type="submit">
             Ingresar
           </Button>
+          {error && <Text>Usuario o contraseña erróneos.</Text>}
         </FormControl>
       </form>
     </Box>
