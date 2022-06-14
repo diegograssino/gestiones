@@ -22,7 +22,6 @@ import {Link} from "react-router-dom";
 import Badges from "../components/Badges";
 import COLORS from "../constants/colors";
 import HrLine from "../components/HrLine";
-import LikeButton from "../components/LikeButton";
 
 const Padron = () => {
   return (
