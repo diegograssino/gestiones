@@ -12,21 +12,6 @@ import HrLine from "../components/HrLine";
 import LikeButton from "../components/LikeButton";
 
 function Article({article}) {
-  // const [thumbsUp, setThumbsUp] = useState(article.likes);
-  // const [alreadyLiked, setAlreadyLiked] = useState(false);
-
-  // useEffect(() => {
-  //   if (!alreadyLiked && thumbsUp > article.likes) {
-  //     const like = firestore.collection("articles").doc(article.id);
-
-  //     like.update({
-  //       likes: thumbsUp,
-  //     });
-  //     setAlreadyLiked(true);
-  //     toast.success("¡Gracias por tu like!");
-  //   }
-  // }, [thumbsUp]);
-
   return (
     <div>
       <Toaster />
@@ -42,9 +27,8 @@ function Article({article}) {
         paddingY={[2, 5, 5, 7]}
         shadow="dark-lg"
       >
-        {/* <Badges category={article.category} /> */}
         <Heading as="h3" fontWeight={700} paddingBottom="2" size="md">
-          <Link to={`/article/${article.id}`}>
+          <Link to={`${article.link}`}>
             <Text>{article.title.toUpperCase()}</Text>
           </Link>
         </Heading>
@@ -62,18 +46,6 @@ function Article({article}) {
               new Date(article.date.seconds * 1000),
             )}
           </Text>
-          {/* <Text color={COLORS.darkSecondary} fontSize="xs" fontWeight="bold">
-            <VscPerson />
-          </Text> */}
-          {/* <Text color={COLORS.darkSecondary} fontSize="xs" fontWeight="bold">
-            {article.author}
-          </Text> */}
-          {/* <Spacer /> */}
-          {/* <LikeButton
-            alreadyLiked={alreadyLiked}
-            setThumbsUp={setThumbsUp}
-            thumbsUp={thumbsUp}
-          /> */}
         </HStack>
         <HrLine theBorderColor={COLORS.darkBorderArticleContent} />
         <Text color={COLORS.darkText} fontSize="md" marginTop="4">
