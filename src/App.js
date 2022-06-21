@@ -15,6 +15,7 @@ import Info from "./components/Info";
 import Footer from "./components/Footer";
 import Padron from "./components/Padron";
 import Login from "./components/Login";
+import Proceso from "./components/Proceso";
 
 function App() {
   const [isDesktop] = useMediaQuery("(min-width: 768px)");
@@ -74,6 +75,17 @@ function App() {
                 exact
                 element={loginData ? <Padron /> : <Login setLoginData={setLoginData} />}
                 path="/gestiones/padron"
+              />
+              <Route
+                exact
+                element={
+                  loginData ? (
+                    <Proceso user={loginData} />
+                  ) : (
+                    <Login setLoginData={setLoginData} />
+                  )
+                }
+                path="/gestiones/proceso"
               />
             </Routes>
             <Spacer />

@@ -40,21 +40,6 @@ const Padron = () => {
         shadow="dark-lg"
       >
         <HStack paddingBottom={2} spacing="0">
-          {/* <Text color={COLORS.darkPrimary} fontSize="xs" fontWeight="bold">
-            <VscWatch />
-          </Text> */}
-          {/* <Text color={COLORS.darkPrimary} fontSize="xs" fontWeight="bold">
-            {new Intl.DateTimeFormat("es-AR").format(
-              new Date(content.date.seconds * 1000),
-            )}
-          </Text> */}
-          {/* <Text color={COLORS.darkSecondary} fontSize="xs" fontWeight="bold">
-            <VscPerson />
-          </Text> */}
-          {/* <Text color={COLORS.darkSecondary} fontSize="xs" fontWeight="bold">
-            {content.author}
-          </Text> */}
-          {/* <Spacer /> */}
           <Text color={COLORS.darkText} fontSize="xl" fontWeight="bold">
             ACTUALIZACIÓN DE PADRÓN
           </Text>
@@ -74,7 +59,6 @@ const Padron = () => {
           del número de telefono no es correcto, debe corregirlo según lo que indique el
           mensaje de error para poder guardar la gestión.
         </Text>
-        {/* Aquí irá el formulario */}
         <FormControl isRequired>
           <FormLabel htmlFor="email">Dirección de Email</FormLabel>
           <Input id="email" type="email" />

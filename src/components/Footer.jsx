@@ -29,10 +29,10 @@ const Footer = () => {
       <Stack>
         <Stack align="center" direction="row" justify="space-between" spacing="4">
           <Image alt="Logo" boxSize="200px" objectFit="contain" src={logo} />
-          <VStack spacing="0">
+          {/* <VStack spacing="0">
             <Text color={COLORS.darkText}>Dirección</Text>
             <Text color={COLORS.darkText}>Telefonos</Text>
-          </VStack>
+          </VStack> */}
 
           {/* <SocialMediaLinks /> */}
         </Stack>
