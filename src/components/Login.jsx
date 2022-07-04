@@ -6,6 +6,7 @@ import {
   Input,
   Box,
   HStack,
+  Center,
   Text,
   Button,
 } from "@chakra-ui/react";
@@ -52,28 +53,37 @@ const Login = ({setLoginData}) => {
       paddingY={[2, 5, 5, 7]}
       shadow="dark-lg"
     >
-      <form onSubmit={handleSubmit}>
-        <FormControl isRequired>
-          <HStack paddingBottom={2} spacing="0">
-            <Text
-              color={COLORS.darkText}
-              fontSize="xl"
-              fontWeight="bold"
-              marginBottom="4"
-            >
-              INICIE SESIÓN
-            </Text>
-          </HStack>
-          <FormLabel htmlFor="email">Usuario</FormLabel>
-          <Input id="theUser" marginBottom="4" type="email" />
-          <FormLabel htmlFor="email">Contraseña</FormLabel>
-          <Input id="thePass" marginBottom="4" type="password" />
-          <Button colorScheme="teal" marginBottom="4" mt={4} type="submit">
-            Ingresar
-          </Button>
-          {error && <Text>Usuario o contraseña erróneos.</Text>}
-        </FormControl>
-      </form>
+      <Center>
+        <form onSubmit={handleSubmit}>
+          <FormControl isRequired>
+            <Center paddingBottom={2} spacing="0">
+              <Text
+                color={COLORS.darkText}
+                fontSize="md"
+                fontWeight="bold"
+                marginBottom="4"
+                marginTop="2"
+              >
+                INICIE SESIÓN
+              </Text>
+            </Center>
+            <FormLabel htmlFor="email">Usuario</FormLabel>
+            <Input id="theUser" marginBottom="4" minWidth="325" type="email" />
+            <FormLabel htmlFor="email">Contraseña</FormLabel>
+            <Input id="thePass" marginBottom="4" type="password" />
+            {error && (
+              <Text color="red.400" fontSize="small" paddingStart="1">
+                Usuario o contraseña erróneos.
+              </Text>
+            )}
+            <Center>
+              <Button colorScheme="teal" marginBottom="4" mt={4} size="sm" type="submit">
+                Ingresar
+              </Button>
+            </Center>
+          </FormControl>
+        </form>
+      </Center>
     </Box>
   );
 };

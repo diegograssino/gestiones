@@ -53,14 +53,13 @@ const Padron = () => {
         <HrLine theBorderColor={COLORS.darkBorderArticleContent} />
         <Text color={COLORS.darkText} fontSize="md" marginY="4">
           Alcance de la gestión:
-          <br /> - Cargar sus datos existentes en el padrón.
-          <br /> - Modificar sus datos existentes en el padrón.
+          <br /> - Cargar sus datos actualizados en el padrón.
           <br />
           <br /> A considerar:
           <br /> - No podrá guardar la gestión con campos vacíos. Ejemplo: No hay datos en
           DNI, entonces la gestión no se completa. Todos los campos son requeridos.
           <br /> - Ciertos campos se validan autmaticamente, si no cumple los requisitos
-          revise los errores en rojo para hacer las correcciones. Ejemplo: Si el formato
+          revise los mensajes de error para hacer las correcciones. Ejemplo: Si el formato
           del número de telefono no es correcto, debe corregirlo según lo que indique el
           mensaje de error para poder guardar la gestión.
         </Text>
