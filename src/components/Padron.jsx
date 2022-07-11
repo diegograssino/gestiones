@@ -567,7 +567,7 @@ const Padron = () => {
           <FormLabel htmlFor="text">Fecha Revalida Especialidad</FormLabel>
           <Input
             id="fechaRevalidaEspecialidad"
-            type="date"
+            type="text"
             onChange={(e) =>
               setData((currState) => ({
                 ...currState,
