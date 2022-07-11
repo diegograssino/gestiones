@@ -36,7 +36,7 @@ const Padron = () => {
     sexo: "",
     direccion: "",
     emailPersonal: "",
-    telFijoPersonal: "",
+    telPersonal: "",
     relacionDeDependencia: "",
     esAutonomo: "",
     tieneConsultorio: "",
@@ -64,15 +64,18 @@ const Padron = () => {
   const [errorSexo, setErrorSexo] = useState(false);
   const [errorDireccion, setErrorDireccion] = useState(false);
   const [errorEmailPersonal, setErrorEmailPersonal] = useState(false);
-  const [errorTelFijoPersonal, setErrorTelFijoPersonal] = useState(false);
+  const [errorTelPersonal, setErrorTelPersonal] = useState(false);
   const [errorRelacionDeDependencia, setErrorRelacionDeDependencia] = useState(false);
   const [errorEsAutonomo, setErrorEsAutonomo] = useState(false);
+  const [errorTieneConsultorio, setErrorTieneConsultorio] = useState(false);
   const [errorDirConsultorio1, setErrorDirConsultorio1] = useState(false);
-  const [errorFantasiaConsultrio1, setErrorFantasiaConsultrio1] = useState(false);
-  const [errorHabilitacionConsultrio1, setErrorHabilitacionConsultrio1] = useState(false);
+  const [errorFantasiaConsultorio1, setErrorFantasiaConsultorio1] = useState(false);
+  const [errorHabilitacionConsultorio1, setErrorHabilitacionConsultorio1] =
+    useState(false);
   const [errorDirConsultorio2, setErrorDirConsultorio2] = useState(false);
-  const [errorFantasiaConsultorio2, setErrorFantasiaConsultrio2] = useState(false);
-  const [errorHabilitacionConsultrio2, setErrorHabilitacionConsultrio2] = useState(false);
+  const [errorFantasiaConsultorio2, setErrorFantasiaConsultorio2] = useState(false);
+  const [errorHabilitacionConsultorio2, setErrorHabilitacionConsultorio2] =
+    useState(false);
   const [errorTelFijoLaboral, setErrorTelFijoLaboral] = useState(false);
   const [errorTelCelularLaboral, setErrorTelCelularLaboral] = useState(false);
   const [errorFacebook, setErrorFacebook] = useState(false);
@@ -122,7 +125,7 @@ const Padron = () => {
     } else {
       setErrorMatricula(false);
     }
-    if (!validator.isAlpha(data.sexo)) {
+    if (!validator.isIn(data.sexo, ["M", "F", "N", "m", "f", "n"])) {
       validationOk = false;
       setErrorSexo(true);
     } else {
@@ -140,92 +143,110 @@ const Padron = () => {
     } else {
       setErrorEmailPersonal(false);
     }
-    if (!validator.isNumeric(data.telFijoPersonal)) {
+    if (!validator.isNumeric(data.telPersonal)) {
       validationOk = false;
-      setErrorTelFijoPersonal(true);
+      setErrorTelPersonal(true);
     } else {
-      setErrorTelFijoPersonal(false);
+      setErrorTelPersonal(false);
     }
-    if (!validator.isAlpha(data.esAutonomo)) {
+    if (!validator.isIn(data.relacionDeDependencia, ["S", "N", "s", "n"])) {
+      validationOk = false;
+      setErrorRelacionDeDependencia(true);
+    } else {
+      setErrorRelacionDeDependencia(false);
+    }
+    if (!validator.isIn(data.esAutonomo, ["S", "N", "s", "n"])) {
       validationOk = false;
       setErrorEsAutonomo(true);
     } else {
       setErrorEsAutonomo(false);
     }
-    if (validator.isEmpty(data.dirConsultorio1)) {
+    if (!validator.isIn(data.tieneConsultorio, ["S", "N", "s", "n"])) {
+      validationOk = false;
+      setErrorTieneConsultorio(true);
+    } else {
+      setErrorTieneConsultorio(false);
+    }
+    if (validator.isEmpty(data.dirConsultorio1) && data.tieneConsultorio === "S") {
       validationOk = false;
       setErrorDirConsultorio1(true);
     } else {
       setErrorDirConsultorio1(false);
     }
-    if (validator.isEmpty(data.fantasiaConsultorio1)) {
+    if (validator.isEmpty(data.fantasiaConsultorio1) && data.tieneConsultorio === "S") {
       validationOk = false;
-      setErrorFantasiaConsultrio1(true);
+      setErrorFantasiaConsultorio1(true);
     } else {
-      setErrorFantasiaConsultrio1(false);
+      setErrorFantasiaConsultorio1(false);
     }
-    if (!validator.isAlphanumeric(data.habilitacionConsultorio1)) {
+    if (
+      validator.isEmpty(data.habilitacionConsultorio1) &&
+      data.tieneConsultorio === "S"
+    ) {
       validationOk = false;
-      setErrorHabilitacionConsultrio1(true);
+      setErrorHabilitacionConsultorio1(true);
     } else {
-      setErrorHabilitacionConsultrio1(false);
+      setErrorHabilitacionConsultorio1(false);
     }
 
-    if (validator.isEmpty(data.dirConsultorio2)) {
+    if (validator.isEmpty(data.dirConsultorio2) && data.tieneConsultorio === "S") {
       validationOk = false;
       setErrorDirConsultorio2(true);
     } else {
       setErrorDirConsultorio2(false);
     }
-    if (validator.isEmpty(data.fantasiaConsultorio2)) {
+    if (validator.isEmpty(data.fantasiaConsultorio2) && data.tieneConsultorio === "S") {
       validationOk = false;
-      setErrorFantasiaConsultrio2(true);
+      setErrorFantasiaConsultorio2(true);
     } else {
-      setErrorFantasiaConsultrio2(false);
+      setErrorFantasiaConsultorio2(false);
     }
-    if (!validator.isAlphanumeric(data.habilitacionConsultorio2)) {
+    if (
+      validator.isEmpty(data.habilitacionConsultorio2) &&
+      data.tieneConsultorio === "S"
+    ) {
       validationOk = false;
-      setErrorHabilitacionConsultrio2(true);
+      setErrorHabilitacionConsultorio2(true);
     } else {
-      setErrorHabilitacionConsultrio2(false);
+      setErrorHabilitacionConsultorio2(false);
     }
-    if (!validator.isNumeric(data.telFijoLaboral)) {
+    if (validator.isEmpty(data.telFijoLaboral)) {
       validationOk = false;
       setErrorTelFijoLaboral(true);
     } else {
       setErrorTelFijoLaboral(false);
     }
-    if (!validator.isNumeric(data.telCelularLaboral)) {
+    if (validator.isEmpty(data.telCelularLaboral)) {
       validationOk = false;
       setErrorTelCelularLaboral(true);
     } else {
       setErrorTelCelularLaboral(false);
     }
-    if (!validator.isAlphanumeric(data.facebook)) {
+    if (validator.isEmpty(data.facebook)) {
       validationOk = false;
       setErrorFacebook(true);
     } else {
       setErrorFacebook(false);
     }
-    if (!validator.isAlphanumeric(data.instagram)) {
+    if (validator.isEmpty(data.instagram)) {
       validationOk = false;
       setErrorInstagram(true);
     } else {
       setErrorInstagram(false);
     }
-    if (!validator.isAlphanumeric(data.twitter)) {
+    if (validator.isEmpty(data.twitter)) {
       validationOk = false;
       setErrorTwitter(true);
     } else {
       setErrorTwitter(false);
     }
-    if (!validator.isAlphanumeric(data.web)) {
+    if (validator.isEmpty(data.web)) {
       validationOk = false;
       setErrorWeb(true);
     } else {
       setErrorWeb(false);
     }
-    if (!validator.isAlphanumeric(data.tiktok)) {
+    if (validator.isEmpty(data.tiktok)) {
       validationOk = false;
       setErrorTikTok(true);
     } else {
@@ -237,7 +258,41 @@ const Padron = () => {
         .collection("padron")
         .add(data)
         .then((res) => toast.success(`Guardado correctamente! ID:${res.id}`))
-        .then(setData({}));
+        .then(
+          setData({
+            email: "",
+            nombres: "",
+            apellidos: "",
+            dni: "",
+            cuit: "",
+            matricula: "",
+            sexo: "",
+            direccion: "",
+            emailPersonal: "",
+            telPersonal: "",
+            relacionDeDependencia: "",
+            esAutonomo: "",
+            tieneConsultorio: "",
+            dirConsultorio1: "",
+            fantasiaConsultorio1: "",
+            habilitacionConsultorio1: "",
+            dirConsultorio2: "",
+            fantasiaConsultorio2: "",
+            habilitacionConsultorio2: "",
+            telFijoLaboral: "",
+            telCelularLaboral: "",
+            facebook: "",
+            instagram: "",
+            twitter: "",
+            web: "",
+            tiktok: "",
+          }),
+        )
+        .then(
+          setTimeout(() => {
+            window.location.replace("https://gestiones.vercel.app");
+          }, 3000),
+        );
     }
   }
 
@@ -272,7 +327,7 @@ const Padron = () => {
           DNI, entonces la gestión no se completa. Todos los campos son requeridos.
           <br /> - Ciertos campos se validan autmaticamente, si no cumple los requisitos
           revise los mensajes de error para hacer las correcciones. Ejemplo: Si el formato
-          del número de telefono no es correcto, debe corregirlo según lo que indique el
+          del número de teléfono no es correcto, debe corregirlo según lo que indique el
           mensaje de error para poder guardar la gestión.
         </Text>
         <FormControl isRequired>
@@ -360,7 +415,8 @@ const Padron = () => {
               {errorCuit && "Revise el campo"}
             </Text>
             <FormHelperText>
-              Ejemplo: 20102003002 (sin puntos ni guiones, solo números)
+              Ejemplo: 20102003002 (sin puntos ni guiones, solo números). Ingrese un - sí
+              el dato es inexistente.
             </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Matrícula</FormLabel>
@@ -431,22 +487,25 @@ const Padron = () => {
             </Text>
             <FormHelperText>Ejemplo: juan@mail.com</FormHelperText>
           </Box>
-          <FormLabel htmlFor="text">Teléfono Fijo Particular</FormLabel>
+          <FormLabel htmlFor="text">Celular Particular</FormLabel>
           <Input
             id="telParticular"
             type="number"
             onChange={(e) =>
               setData((currState) => ({
                 ...currState,
-                telFijoPersonal: e.target.value,
+                telPersonal: e.target.value,
               }))
             }
           />
           <Box marginBottom="4" marginTop="2">
             <Text color="red.500" fontSize="sm">
-              {errorTelFijoPersonal && "Revise el campo"}
+              {errorTelPersonal && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: 38141231234 (no debe ingresar el 0)</FormHelperText>
+            <FormHelperText>
+              Ejemplo: 38141231234 (no debe ingresar el 0) Ingrese un - sí el dato es
+              inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">¿Está en relación de dependencia?</FormLabel>
           <Input
@@ -498,11 +557,15 @@ const Padron = () => {
             }
           />
           <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorTieneConsultorio && "Revise el campo"}
+            </Text>
             <FormHelperText>Ingrese S si tiene un consultorio, N si no.</FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Dirección consultorio 1</FormLabel>
           <Input
             id="direccionConsultorio1"
+            isDisabled={data.tieneConsultorio === "S" ? false : true}
             type="text"
             onChange={(e) =>
               setData((currState) => ({
@@ -515,11 +578,15 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorDirConsultorio1 && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: Calle 123 Piso 1 Departamento 2</FormHelperText>
+            <FormHelperText>
+              Ejemplo: Calle 123 Piso 1 Departamento 2, solo permite/ debe completarlo si
+              declaro tener consultorio. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Nombre de fantasía consultorio 1</FormLabel>
           <Input
             id="fantasiaConsultorio1"
+            isDisabled={data.tieneConsultorio === "S" ? false : true}
             type="text"
             onChange={(e) =>
               setData((currState) => ({
@@ -530,13 +597,17 @@ const Padron = () => {
           />
           <Box marginBottom="4" marginTop="2">
             <Text color="red.500" fontSize="sm">
-              {errorFantasiaConsultrio1 && "Revise el campo"}
+              {errorFantasiaConsultorio1 && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: Tu Odontólogo</FormHelperText>
+            <FormHelperText>
+              Ejemplo: Tu Odontólogo, solo permite/ debe completarlo si declaro tener
+              consultorio. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Número de habilitación consultorio 1</FormLabel>
           <Input
             id="habilitaciónConsultorio1"
+            isDisabled={data.tieneConsultorio === "S" ? false : true}
             type="text"
             onChange={(e) =>
               setData((currState) => ({
@@ -547,13 +618,17 @@ const Padron = () => {
           />
           <Box marginBottom="4" marginTop="2">
             <Text color="red.500" fontSize="sm">
-              {errorHabilitacionConsultrio1 && "Revise el campo"}
+              {errorHabilitacionConsultorio1 && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: 1234A</FormHelperText>
+            <FormHelperText>
+              Ejemplo: 1234A, solo permite/ debe completarlo si declaro tener consultorio.
+              Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Dirección consultorio 2</FormLabel>
           <Input
             id="direccionConsultorio2"
+            isDisabled={data.tieneConsultorio === "S" ? false : true}
             type="text"
             onChange={(e) =>
               setData((currState) => ({
@@ -566,11 +641,18 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorDirConsultorio2 && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: Calle 123 Piso 1 Departamento 2</FormHelperText>
+            <FormHelperText>
+              Ejemplo: Calle 123 Piso 1 Departamento 2, solo permite/ debe completarlo si
+              declaro tener consultorio. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
-          <FormLabel htmlFor="text">Nombre de fantasía consultorio 2</FormLabel>
+          <FormLabel htmlFor="text">
+            Nombre de fantasía consultorio 2, solo permite/ debe completarlo si declaro
+            tener consultorio. Ingrese un - sí el dato es inexistente.
+          </FormLabel>
           <Input
             id="fantasiaConsultorio2"
+            isDisabled={data.tieneConsultorio === "S" ? false : true}
             type="text"
             onChange={(e) =>
               setData((currState) => ({
@@ -583,11 +665,15 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorFantasiaConsultorio2 && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: Tu Odontólogo</FormHelperText>
+            <FormHelperText>
+              Ejemplo: Tu Odontólogo, solo permite/ debe completarlo si declaro tener
+              consultorio. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Número de habilitación consultorio 2</FormLabel>
           <Input
             id="habilitaciónConsultorio2"
+            isDisabled={data.tieneConsultorio === "S" ? false : true}
             type="text"
             onChange={(e) =>
               setData((currState) => ({
@@ -598,9 +684,12 @@ const Padron = () => {
           />
           <Box marginBottom="4" marginTop="2">
             <Text color="red.500" fontSize="sm">
-              {errorHabilitacionConsultrio2 && "Revise el campo"}
+              {errorHabilitacionConsultorio2 && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: 1234A</FormHelperText>
+            <FormHelperText>
+              Ejemplo: 1234A, solo permite/ debe completarlo si declaro tener consultorio.
+              Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Teléfono laboral fijo</FormLabel>
           <Input
@@ -617,7 +706,10 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorTelFijoLaboral && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: 38141231234 (no debe ingresar el 0)</FormHelperText>
+            <FormHelperText>
+              Ejemplo: 38141231234 (no debe ingresar el 0). Ingrese un - sí el dato es
+              inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Teléfono laboral celular</FormLabel>
           <Input
@@ -635,7 +727,8 @@ const Padron = () => {
               {errorTelCelularLaboral && "Revise el campo"}
             </Text>
             <FormHelperText>
-              Ejemplo: 38141231234 (no debe ingresar el 0 ni el 15)
+              Ejemplo: 38141231234 (no debe ingresar el 0 ni el 15). Ingrese un - sí el
+              dato es inexistente.
             </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Facebook</FormLabel>
@@ -653,7 +746,10 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorFacebook && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: http://facebook.com/odontologo</FormHelperText>
+            <FormHelperText>
+              Ejemplo: http://facebook.com/odontologo. Ingrese un - sí el dato es
+              inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Instagram</FormLabel>
           <Input
@@ -670,7 +766,9 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorInstagram && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: @odontologo</FormHelperText>
+            <FormHelperText>
+              Ejemplo: @odontologo. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Twitter</FormLabel>
           <Input
@@ -687,7 +785,9 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorTwitter && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: @odontologo</FormHelperText>
+            <FormHelperText>
+              Ejemplo: @odontologo. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">Página web</FormLabel>
           <Input
@@ -704,7 +804,10 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorWeb && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: http://www.odontologo.com.ar</FormHelperText>
+            <FormHelperText>
+              Ejemplo: http://www.odontologo.com.ar. Ingrese un - sí el dato es
+              inexistente.
+            </FormHelperText>
           </Box>
           <FormLabel htmlFor="text">TikTok</FormLabel>
           <Input
@@ -721,7 +824,9 @@ const Padron = () => {
             <Text color="red.500" fontSize="sm">
               {errorTikTok && "Revise el campo"}
             </Text>
-            <FormHelperText>Ejemplo: odontologo</FormHelperText>
+            <FormHelperText>
+              Ejemplo: odontologo. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
           </Box>
         </FormControl>
         <Button
