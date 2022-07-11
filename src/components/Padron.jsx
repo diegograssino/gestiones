@@ -33,6 +33,12 @@ const Padron = () => {
     dni: "",
     cuit: "",
     matricula: "",
+    universidad: "",
+    fechaGraduacion: "",
+    especialidad: "",
+    organismoEspecialidad: "",
+    fechaRevalidaEspecialidad: "",
+    empresaSeguro: "",
     sexo: "",
     direccion: "",
     emailPersonal: "",
@@ -61,6 +67,13 @@ const Padron = () => {
   const [errorDni, setErrorDni] = useState(false);
   const [errorCuit, setErrorCuit] = useState(false);
   const [errorMatricula, setErrorMatricula] = useState(false);
+  const [errorUniversidad, setErrorUniversidad] = useState(false);
+  const [errorFechaGraduacion, setErrorFechaGraduacion] = useState(false);
+  const [errorEspecialidad, setErrorEspecialidad] = useState(false);
+  const [errorOrganismoEspecialidad, setErrorOrganismoEspecialidad] = useState(false);
+  const [errorFechaRevalidaEspecialidad, setErrorFechaRevalidaEspecialidad] =
+    useState(false);
+  const [errorEmpresaSeguro, setErrorEmpresaSeguro] = useState(false);
   const [errorSexo, setErrorSexo] = useState(false);
   const [errorDireccion, setErrorDireccion] = useState(false);
   const [errorEmailPersonal, setErrorEmailPersonal] = useState(false);
@@ -124,6 +137,42 @@ const Padron = () => {
       setErrorMatricula(true);
     } else {
       setErrorMatricula(false);
+    }
+    if (validator.isEmpty(data.universidad)) {
+      validationOk = false;
+      setErrorUniversidad(true);
+    } else {
+      setErrorUniversidad(false);
+    }
+    if (validator.isEmpty(data.fechaGraduacion)) {
+      validationOk = false;
+      setErrorFechaGraduacion(true);
+    } else {
+      setErrorFechaGraduacion(false);
+    }
+    if (validator.isEmpty(data.especialidad)) {
+      validationOk = false;
+      setErrorEspecialidad(true);
+    } else {
+      setErrorEspecialidad(false);
+    }
+    if (validator.isEmpty(data.organismoEspecialidad)) {
+      validationOk = false;
+      setErrorOrganismoEspecialidad(true);
+    } else {
+      setErrorOrganismoEspecialidad(false);
+    }
+    if (validator.isEmpty(data.fechaRevalidaEspecialidad)) {
+      validationOk = false;
+      setErrorFechaRevalidaEspecialidad(true);
+    } else {
+      setErrorFechaRevalidaEspecialidad(false);
+    }
+    if (validator.isEmpty(data.empresaSeguro)) {
+      validationOk = false;
+      setErrorEmpresaSeguro(true);
+    } else {
+      setErrorEmpresaSeguro(false);
     }
     if (!validator.isIn(data.sexo, ["M", "F", "N", "m", "f", "n"])) {
       validationOk = false;
@@ -286,6 +335,12 @@ const Padron = () => {
             twitter: "",
             web: "",
             tiktok: "",
+            universidad: "",
+            fechaGraduacion: "",
+            especialidad: "",
+            organismoEspecialidad: "",
+            fechaRevalidaEspecialidad: "",
+            empresaSeguro: "",
           }),
         )
         .then(
@@ -325,7 +380,7 @@ const Padron = () => {
           <br /> A considerar:
           <br /> - No podrá guardar la gestión con campos vacíos. Ejemplo: No hay datos en
           DNI, entonces la gestión no se completa. Todos los campos son requeridos.
-          <br /> - Ciertos campos se validan autmaticamente, si no cumple los requisitos
+          <br /> - Ciertos campos se validan automáticamente, si no cumple los requisitos
           revise los mensajes de error para hacer las correcciones. Ejemplo: Si el formato
           del número de teléfono no es correcto, debe corregirlo según lo que indique el
           mensaje de error para poder guardar la gestión.
@@ -436,6 +491,117 @@ const Padron = () => {
             </Text>
             <FormHelperText>Ejemplo: 1234 (sin puntos, solo números)</FormHelperText>
           </Box>
+          <FormLabel htmlFor="text">Universidad que otorga el título</FormLabel>
+          <Input
+            id="universidad"
+            type="text"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                universidad: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorUniversidad && "Revise el campo"}
+            </Text>
+            <FormHelperText>Ejemplo: Facultad de odontología de Tucumán.</FormHelperText>
+          </Box>
+          <FormLabel htmlFor="text">Fecha de graduación</FormLabel>
+          <Input
+            id="fechaGraduacion"
+            type="date"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                fechaGraduacion: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorFechaGraduacion && "Revise el campo"}
+            </Text>
+            <FormHelperText>Ejemplo: 10/10/2010.</FormHelperText>
+          </Box>
+          <FormLabel htmlFor="text">Especialidad</FormLabel>
+          <Input
+            id="matricula"
+            type="text"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                especialidad: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorEspecialidad && "Revise el campo"}
+            </Text>
+            <FormHelperText>
+              Ejemplo: Mi Especialidad. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
+          </Box>
+          <FormLabel htmlFor="text">Organismo que otorga la especialidad</FormLabel>
+          <Input
+            id="organismoEspecialidad"
+            type="text"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                organismoEspecialidad: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorOrganismoEspecialidad && "Revise el campo"}
+            </Text>
+            <FormHelperText>
+              Ejemplo: Facultad de Odontología de Tucumán Ingrese un - sí el dato es
+              inexistente..
+            </FormHelperText>
+          </Box>
+          <FormLabel htmlFor="text">Fecha Revalida Especialidad</FormLabel>
+          <Input
+            id="fechaRevalidaEspecialidad"
+            type="date"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                fechaRevalidaEspecialidad: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorMatricula && "Revise el campo"}
+            </Text>
+            <FormHelperText>
+              Ejemplo: 10/10/2010. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
+          </Box>
+          <FormLabel htmlFor="text">Empresa Seguro Responsabilidad Civil</FormLabel>
+          <Input
+            id="empresaSeguro"
+            type="text"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                empresaSeguro: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorEmpresaSeguro && "Revise el campo"}
+            </Text>
+            <FormHelperText>
+              Ejemplo: Empresa de seguros. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
+          </Box>
           <FormLabel htmlFor="text">Sexo</FormLabel>
           <Input
             id="sexo"
@@ -503,7 +669,7 @@ const Padron = () => {
               {errorTelPersonal && "Revise el campo"}
             </Text>
             <FormHelperText>
-              Ejemplo: 38141231234 (no debe ingresar el 0) Ingrese un - sí el dato es
+              Ejemplo: 38141231234 (no debe ingresar el 0). Ingrese un - sí el dato es
               inexistente.
             </FormHelperText>
           </Box>
