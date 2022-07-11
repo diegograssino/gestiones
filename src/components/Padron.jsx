@@ -95,13 +95,13 @@ const Padron = () => {
       setErrorEmail(false);
     }
 
-    if (!validator.isAlpha(data.nombres)) {
+    if (validator.isEmpty(data.nombres)) {
       validationOk = false;
       setErrorNombres(true);
     } else {
       setErrorNombres(false);
     }
-    if (!validator.isAlpha(data.apellidos)) {
+    if (validator.isEmpty(data.apellidos)) {
       validationOk = false;
       setErrorApellidos(true);
     } else {
@@ -113,7 +113,7 @@ const Padron = () => {
     } else {
       setErrorDni(false);
     }
-    if (!validator.isNumeric(data.cuit)) {
+    if (validator.isEmpty(data.cuit)) {
       validationOk = false;
       setErrorCuit(true);
     } else {
@@ -143,7 +143,7 @@ const Padron = () => {
     } else {
       setErrorEmailPersonal(false);
     }
-    if (!validator.isNumeric(data.telPersonal)) {
+    if (validator.isEmpty(data.telPersonal)) {
       validationOk = false;
       setErrorTelPersonal(true);
     } else {
