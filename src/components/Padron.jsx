@@ -8,19 +8,14 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
   Input,
-  RadioGroup,
-  Radio,
-  Container,
 } from "@chakra-ui/react";
 import toast, {Toaster} from "react-hot-toast";
-import {VscWatch, VscPerson, VscArrowLeft} from "react-icons/vsc";
+import {VscArrowLeft} from "react-icons/vsc";
 import {Link} from "react-router-dom";
 import validator from "validator";
 
-import Badges from "../components/Badges";
 import COLORS from "../constants/colors";
 import HrLine from "../components/HrLine";
 import {firestore} from "../database/firebase";
@@ -37,6 +32,7 @@ const Padron = () => {
     fechaGraduacion: "",
     especialidad: "",
     organismoEspecialidad: "",
+    fechaEspecialidad: "",
     fechaRevalidaEspecialidad: "",
     empresaSeguro: "",
     sexo: "",
@@ -71,6 +67,7 @@ const Padron = () => {
   const [errorFechaGraduacion, setErrorFechaGraduacion] = useState(false);
   const [errorEspecialidad, setErrorEspecialidad] = useState(false);
   const [errorOrganismoEspecialidad, setErrorOrganismoEspecialidad] = useState(false);
+  const [errorFechaEspecialidad, setErrorFechaEspecialidad] = useState(false);
   const [errorFechaRevalidaEspecialidad, setErrorFechaRevalidaEspecialidad] =
     useState(false);
   const [errorEmpresaSeguro, setErrorEmpresaSeguro] = useState(false);
@@ -161,6 +158,12 @@ const Padron = () => {
       setErrorOrganismoEspecialidad(true);
     } else {
       setErrorOrganismoEspecialidad(false);
+    }
+    if (validator.isEmpty(data.fechaEspecialidad)) {
+      validationOk = false;
+      setErrorFechaEspecialidad(true);
+    } else {
+      setErrorFechaEspecialidad(false);
     }
     if (validator.isEmpty(data.fechaRevalidaEspecialidad)) {
       validationOk = false;
@@ -339,13 +342,14 @@ const Padron = () => {
             fechaGraduacion: "",
             especialidad: "",
             organismoEspecialidad: "",
+            fechaEspecialidad: "",
             fechaRevalidaEspecialidad: "",
             empresaSeguro: "",
           }),
         )
         .then(
           setTimeout(() => {
-            window.location.replace("https://gestiones.vercel.app");
+            window.location.href = "https://gestiones.vercel.app";
           }, 3000),
         );
     }
@@ -447,7 +451,7 @@ const Padron = () => {
                 dni: e.target.value,
               }))
             }
-          />{" "}
+          />
           <Box marginBottom="4" marginTop="2">
             <Text color="red.500" fontSize="sm">
               {errorDni && "Revise el campo"}
@@ -564,6 +568,25 @@ const Padron = () => {
               inexistente..
             </FormHelperText>
           </Box>
+          <FormLabel htmlFor="text">Fecha Especialidad</FormLabel>
+          <Input
+            id="fechaEspecialidad"
+            type="text"
+            onChange={(e) =>
+              setData((currState) => ({
+                ...currState,
+                fechaEspecialidad: e.target.value,
+              }))
+            }
+          />
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorFechaEspecialidad && "Revise el campo"}
+            </Text>
+            <FormHelperText>
+              Ejemplo: 10/10/2010. Ingrese un - sí el dato es inexistente.
+            </FormHelperText>
+          </Box>
           <FormLabel htmlFor="text">Fecha Revalida Especialidad</FormLabel>
           <Input
             id="fechaRevalidaEspecialidad"
@@ -577,7 +600,7 @@ const Padron = () => {
           />
           <Box marginBottom="4" marginTop="2">
             <Text color="red.500" fontSize="sm">
-              {errorMatricula && "Revise el campo"}
+              {errorFechaRevalidaEspecialidad && "Revise el campo"}
             </Text>
             <FormHelperText>
               Ejemplo: 10/10/2010. Ingrese un - sí el dato es inexistente.
