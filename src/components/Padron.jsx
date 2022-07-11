@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {
   Box,
   Flex,
-  Heading,
   HStack,
   Text,
   Spacer,
@@ -14,10 +13,12 @@ import {
   Input,
   RadioGroup,
   Radio,
+  Container,
 } from "@chakra-ui/react";
 import toast, {Toaster} from "react-hot-toast";
 import {VscWatch, VscPerson, VscArrowLeft} from "react-icons/vsc";
 import {Link} from "react-router-dom";
+import validator from "validator";
 
 import Badges from "../components/Badges";
 import COLORS from "../constants/colors";
@@ -54,15 +55,49 @@ const Padron = () => {
     tiktok: "",
   });
 
-  console.log(data);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorNombres, setErrorNombres] = useState(false);
+  const [errorApellidos, setErrorApellidos] = useState(false);
+  const [errorDni, setErrorDni] = useState(false);
+  const [errorCuit, setErrorCuit] = useState(false);
+  const [errorMatricula, setErrorMatricula] = useState(false);
+  const [errorSexo, setErrorSexo] = useState(false);
+  const [errorDireccion, setErrorDireccion] = useState(false);
+  const [errorEmailPersonal, setErrorEmailPersonal] = useState(false);
+  const [errorTelFijoPersonal, setErrorTelFijoPersonal] = useState(false);
+  const [errorRelacionDeDependencia, setErrorRelacionDeDependencia] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    firestore
-      .collection("padron")
-      .add(data)
-      .then((res) => toast.success(`Guardado correctamente! ID:${res.id}`))
-      .then(setData({}));
+    let validationOk = true;
+
+    if (!validator.isEmail(data.email)) {
+      validationOk = false;
+      setErrorEmail(true);
+    } else {
+      setErrorEmail(false);
+    }
+
+    if (!validator.isAlpha(data.nombres)) {
+      validationOk = false;
+      setErrorNombres(true);
+    } else {
+      setErrorNombres(false);
+    }
+    if (!validator.isAlpha(data.apellidos)) {
+      validationOk = false;
+      setErrorApellidos(true);
+    } else {
+      setErrorApellidos(false);
+    }
+
+    if (validationOk) {
+      firestore
+        .collection("padron")
+        .add(data)
+        .then((res) => toast.success(`Guardado correctamente! ID:${res.id}`))
+        .then(setData({}));
+    }
   }
 
   return (
@@ -111,7 +146,12 @@ const Padron = () => {
               }))
             }
           />
-          <FormHelperText marginBottom="4">Ejemplo: odontologo@mail.com</FormHelperText>
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorEmail && "Revise el campo"}
+            </Text>
+            <FormHelperText>Ejemplo: odontologo@mail.com</FormHelperText>
+          </Box>
           <FormLabel htmlFor="text">Nombres</FormLabel>
           <Input
             id="nombre"
@@ -123,7 +163,12 @@ const Padron = () => {
               }))
             }
           />
-          <FormHelperText marginBottom="4">Ejemplo: María Laura</FormHelperText>
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorNombres && "Revise el campo"}
+            </Text>
+            <FormHelperText marginBottom="4">Ejemplo: María Laura</FormHelperText>
+          </Box>
           <FormLabel htmlFor="text">Apellidos</FormLabel>
           <Input
             id="apellido"
@@ -135,7 +180,13 @@ const Padron = () => {
               }))
             }
           />
-          <FormHelperText marginBottom="4">Ejemplo: Perez</FormHelperText>
+          <Box marginBottom="4" marginTop="2">
+            <Text color="red.500" fontSize="sm">
+              {errorApellidos && "Revise el campo"}
+            </Text>
+            <FormHelperText marginBottom="4">Ejemplo: Perez</FormHelperText>
+          </Box>
+
           <FormLabel htmlFor="number">DNI</FormLabel>
           <Input
             id="dni"

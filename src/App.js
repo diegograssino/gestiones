@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, Flex, Spacer, useMediaQuery } from "@chakra-ui/react";
+import { Box, ChakraProvider, Spacer, useMediaQuery } from "@chakra-ui/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "@fontsource/noto-sans/400.css";
