@@ -1,9 +1,9 @@
-import {Box, ChakraProvider, Flex, Spacer, useMediaQuery} from "@chakra-ui/react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { Box, ChakraProvider, Flex, Spacer, useMediaQuery } from "@chakra-ui/react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "@fontsource/noto-sans/400.css";
 import "@fontsource/noto-sans/700.css";
-import {useState} from "react";
+import { useState } from "react";
 
 import theme from "./theme/theme";
 import COLORS from "./constants/colors";
@@ -24,7 +24,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <BrowserRouter>
-        <Box backgroundColor={COLORS.darkBackground} h="100%" minHeight="76vh">
+        <Box backgroundColor={COLORS.darkBackground} h="100%" minHeight="76.5vh">
           <Header loginData={loginData} setLoginData={setLoginData} />
           <Box
             backgroundColor={COLORS.darkBackground}

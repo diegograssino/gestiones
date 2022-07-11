@@ -59,10 +59,10 @@ const Login = ({setLoginData}) => {
             <Center paddingBottom={2} spacing="0">
               <Text
                 color={COLORS.darkText}
-                fontSize="md"
+                fontSize="xl"
                 fontWeight="bold"
                 marginBottom="4"
-                marginTop="2"
+                marginTop="0"
               >
                 INICIE SESIÓN
               </Text>

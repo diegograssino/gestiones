@@ -10,7 +10,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 import {Link as RouterLink} from "react-router-dom";
-import {VscPerson} from "react-icons/vsc";
 
 import COLORS from "../constants/colors";
 import logo from "../assets/big-logo-white.png";
@@ -51,9 +50,6 @@ function Header({loginData, setLoginData}) {
             <Box color={COLORS.darkText}>
               {loginData && (
                 <HStack color={COLORS.darkSecondary} fontSize="xs" spacing="0">
-                  <Text>
-                    <VscPerson />
-                  </Text>
                   <Text>{loginData.email}</Text>
                 </HStack>
               )}

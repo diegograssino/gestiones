@@ -17,7 +17,7 @@ const Footer = () => {
       borderStartColor={COLORS.darkBackground}
       borderTopColor={COLORS.darkBorderArticleContent}
       borderWidth="1px"
-      minHeight="20%"
+      // minHeight="20%"
       mx="auto"
       px={{
         base: "4",
