@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -11,14 +11,14 @@ import {
   FormHelperText,
   Input,
 } from "@chakra-ui/react";
-import toast, {Toaster} from "react-hot-toast";
-import {VscArrowLeft} from "react-icons/vsc";
-import {Link} from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { VscArrowLeft } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 import validator from "validator";
 
 import COLORS from "../constants/colors";
 import HrLine from "../components/HrLine";
-import {firestore} from "../database/firebase";
+import { firestore } from "../database/firebase";
 
 const Padron = () => {
   const [data, setData] = useState({
@@ -55,6 +55,7 @@ const Padron = () => {
     twitter: "",
     web: "",
     tiktok: "",
+    fecha: new Date().toLocaleDateString(),
   });
 
   const [errorEmail, setErrorEmail] = useState(false);
@@ -345,12 +346,13 @@ const Padron = () => {
             fechaEspecialidad: "",
             fechaRevalidaEspecialidad: "",
             empresaSeguro: "",
-          }),
+            fecha: new Date().toLocaleDateString(),
+          })
         )
         .then(
           setTimeout(() => {
             window.location.href = "https://gestiones.vercel.app";
-          }, 3000),
+          }, 3000)
         );
     }
   }
